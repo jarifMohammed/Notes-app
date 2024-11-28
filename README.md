@@ -70,3 +70,8 @@ Technologies Used
  1 Node.js for backend logic
  2 Chalk for colorful terminal output
  3 yargs for command-line argument parsing
+
+ Versions
+ 
+ "chalk": "^2.4.1",
+ "yargs": "^17.7.2"
