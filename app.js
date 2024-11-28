@@ -18,14 +18,14 @@ yargs.command({
       type: "string",
     },
     body: {
-        describe: "Note body",
-        demandOption: true,
-        type: "string",
-      },
+      describe: "Note body",
+      demandOption: true,
+      type: "string",
+    },
   },
-  
+
   handler: function (argv) {
-         notes.addNote(argv.title, argv.body);
+    notes.addNote(argv.title, argv.body);
     // console.log('Title: ' +argv.title);
     // console.log('Body: ' +argv.body);
     // node app.js  add --title="Buy" --body="the is a buy"
@@ -38,9 +38,19 @@ yargs.command({
 yargs.command({
   command: "remove",
   describe: "Remove a new note",
+  builder:{
+    title:{
+      describe:'Note title',
+      demandOption :true,
+      type : 'string'
+    }
 
-  handler: function () {
-    console.log("Removing a  note");
+  },
+
+  handler: function (argv) {
+    //console.log("Removing a  note");
+
+    notes.removeNote(argv.title)
   },
 });
 
