@@ -7,11 +7,18 @@ const getNotes = function () {
 // add note function 
 const addNote = function (title, body) {
   const notes = loadNotes();
-  const duplicateNotes = notes.filter(function (note) {
-    return note.title === title;
-  });
+  // const duplicateNotes = notes.filter(function (note) {
+  //   return note.title === title;
+  // });
+  // 2nd one is efficient way  we can use arrow function also to reduce the code
+  const duplicateNotes = notes.find(function (note){
+    return note.title === title
+  })
 
-  if (duplicateNotes.length === 0) {
+
+
+  // if (duplicateNotes.length === 0)
+     if(!duplicateNotes){
     notes.push({
       title: title,
       body: body,
@@ -76,11 +83,32 @@ const listNotes = () => {
 }
 
 
+// read note
+
+const readNote = (title) => {
+  const notes = loadNotes()
+
+  const note = notes.find((note) => {
+    return note.title === title
+  })
+
+
+  if(note){
+    console.log(chalk.inverse(note.title));
+    console.log(note.body);
+  }
+  else{
+    console.log(chalk.red.inverse('Notes not found'));
+  }
+}
+
+
 
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
 
   removeNote : removeNote,
-  listNotes : listNotes
+  listNotes : listNotes,
+  readNote :readNote
 };
