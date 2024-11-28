@@ -70,8 +70,8 @@ yargs.command({
   command: "list",
   describe: "List a new note",
 
-  handler: function () {
-    console.log("Listing all  notes");
+  handler () {
+    notes.listNotes()
   },
 });
 
